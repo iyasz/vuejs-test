@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="text-center">
+        <h1 id="#anime">Hello Vue!</h1>
+    </div>
+
+    <div id="app">
+        <h1 class="text-primary">Anime {{ name }}</h1>
+        <h1>Uy {{ testing }}</h1>
+        <h1>{{zero}}</h1>
+        <input type="text" v-model="name" class="form-control mb-3" name="" id="">
+        <button @:click="animeClick()" class="btn btn-primary me-4">anime cuy</button>
+        <button @:click="check()" class="btn btn-primary">Check</button>
+
+        <table v-if="status" class="table mt-5">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Kelas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="siswas in siswa" :key="name">
+                    <td>{{ siswas.name }}</td>
+                    <td>{{ siswas.kelas }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p v-else>Gaada </p>
+    </div>
+
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <script>
+
+        const anime = {
+            data() {
+                return {
+                    name: 'Wibu',
+                    testing: 0,
+                    zero: "",
+                    siswa: [
+                        {name: 'anime', kelas:"RPL"},
+                        {name: 'jawir', kelas:"MM"},
+                        {name: 'Sepuh', kelas:"TKJ"},
+                    ],
+                    status: true,
+
+                }
+            },
+            mounted() {
+                setInterval(() => {
+                    this.testing++
+                }, 1000)
+            },
+            methods: {
+                animeClick() {
+                    this.name = this.name + "elite"
+                },
+                check() {
+                    if(this.name === "Wibu")
+                        // this.testing = 100
+                        this.zero = "Mantap"
+                    else
+                        // this.testing = 0
+                        this.zero = "Tidak Mantap"
+                        
+                }
+            }
+        }
+
+        Vue.createApp(anime).mount('#app')
+    // const { createApp } = Vue
+
+    // createApp({
+    //     data() {
+    //     return {
+    //         message: 'hah!'
+    //     }
+    //     }
+    // }).mount('#app')
+
+
+    </script>
+    
+  </body>
+</html>
